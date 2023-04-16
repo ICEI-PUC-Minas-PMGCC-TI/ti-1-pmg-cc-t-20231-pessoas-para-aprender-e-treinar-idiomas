@@ -33,4 +33,4 @@ Abrir o Arquivo "Trabalho Front - End.pptx", com o pregrama PowerPoint eu em um 
 Arquivos Extras, apenas para complemento:
 
 * Pasta "Tela" no caminho "github-classroom\ICEI-PUC-Minas-PMGCC-TI\ti-1-pmg-cc-t-20231-pessoas-para-aprender-e-treinar-idiomas\docs\relatorio\Telas"
-* Arquivo Word "Wireframe das Telas.docx" no caminho "github-classroom\ICEI-PUC-Minas-PMGCC-TI\ti-1-pmg-cc-t-20231-pessoas-para-aprender-e-treinar-idiomas\docs\relatorio\Wireframedas Telas.docx"
+* Arquivo Word "Wireframe das Telas.docx" no caminho "github-classroom\ICEI-PUC-Minas-PMGCC-TI\ti-1-pmg-cc-t-20231-pessoas-para-aprender-e-treinar-idiomas\docs\relatorio\Wireframedas Telas.docx"  
