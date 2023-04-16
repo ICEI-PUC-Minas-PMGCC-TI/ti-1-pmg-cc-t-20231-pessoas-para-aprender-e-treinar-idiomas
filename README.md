@@ -22,11 +22,11 @@ Por isso, nos da Polyglot buscamos criar um meio inovador, para as pessoas conse
 
 Baixar os arquivos:
 
-* "Design Thinking.pdf" no caminho "github-classroom\ICEI-PUC-Minas-PMGCC-TI\ti-1-pmg-cc-t-20231-pessoas-para-aprender-e-treinar-idiomas\docs\concepcao"
+* "Design Thinking.zip" no caminho "github-classroom\ICEI-PUC-Minas-PMGCC-TI\ti-1-pmg-cc-t-20231-pessoas-para-aprender-e-treinar-idiomas\docs\concepcao"
 * "Trabalho Front - End.pptx" no caminho "github-classroom\ICEI-PUC-Minas-PMGCC-TI\ti-1-pmg-cc-t-20231-pessoas-para-aprender-e-treinar-idiomas\docs\apresentacao"
 * "Design Thinking.pdf" no caminho "github-classroom\ICEI-PUC-Minas-PMGCC-TI\ti-1-pmg-cc-t-20231-pessoas-para-aprender-e-treinar-idiomas\docs\relatorio"
 
-Abrir os Arquivos "Design Thinking.pdf", "Design Thinking.pdf" em um leitor de PDF.
+Abrir os Arquivos "Design Thinking.zip", descompactalo e sera obtido o arquivo "Design Thinking.pdf", abra ele em um leitor de PDF.
 Abrir o Arquivo "Trabalho Front - End.pptx", com o pregrama PowerPoint eu em um PowerPoint online.
 
 
