@@ -1,31 +1,35 @@
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
-authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
-  - name-suffix: Professor
+title: Polyglot
+authors: Alice, Augusto, Domynic, Felipe. 
+
+  - family-names: Alice Pereira de Aguilar Penido.
+    given-names: Alice
+
+  - family-names: Augusto César Ávila do Nascimento.
+    given-names: Augusto
+
+  - family-names: Domynic Barros Lima.
+    given-names: Domynic
+
+  - family-names: Felipe Rivetti Mizher.
+    given-names: Felipe
+
+  - family-names: Rommel Vieira Carneiro
+    given-names: Professor Rommel
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
-  - name-suffix: Professor
+
+  - family-names: Ilo Amy Saldanha Rivero
+    given-names: Professor Ilo
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+
+  - family-names: Fernando Camilo Paes
+    given-names: Professor Fernando
+    affiliation: PUC Minas
+
 keywords:
   - 
-  - 
-repository-code: 
+repository-code: https://github.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-pmg-cc-t-20231-pessoas-para-aprender-e-treinar-idiomas
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 2022-07-14
+date-released: 2023-04-16
