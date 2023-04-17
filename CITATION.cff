@@ -3,28 +3,28 @@ message: Please cite this software using these metadata.
 title: Polyglot
 authors: Alice, Augusto, Domynic, Felipe. 
 
-  - family-names: Alice Pereira de Aguilar Penido.
+  - family-names: Pereira de Aguilar Penido.
     given-names: Alice
 
-  - family-names: Augusto César Ávila do Nascimento.
+  - family-names: César Ávila do Nascimento.
     given-names: Augusto
 
-  - family-names: Domynic Barros Lima.
+  - family-names: Barros Lima.
     given-names: Domynic
 
-  - family-names: Felipe Rivetti Mizher.
+  - family-names: Rivetti Mizher.
     given-names: Felipe
 
-  - family-names: Rommel Vieira Carneiro
-    given-names: Professor Rommel
+  - family-names: Vieira Carneiro
+    given-names: Rommel
     affiliation: PUC Minas
 
-  - family-names: Ilo Amy Saldanha Rivero
-    given-names: Professor Ilo
+  - family-names: Amy Saldanha Rivero
+    given-names: Ilo
     affiliation: PUC Minas
 
-  - family-names: Fernando Camilo Paes
-    given-names: Professor Fernando
+  - family-names: Camilo Paes
+    given-names: Fernando
     affiliation: PUC Minas
 
 keywords:
