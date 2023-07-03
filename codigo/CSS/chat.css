@@ -1,0 +1,17 @@
+.main_chat{
+    width: 100vw;
+    height: 80vh;
+    color: var(--texto-cor);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.main_chat h{
+    color: var(--texto-cor);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}

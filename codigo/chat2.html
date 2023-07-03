@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <title>Polyglot</title>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link ref="https://fonts.googleapis.com/css2? 
+      family=Fira+Code:wght@300;500&family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="CSS/reset.css" rel="stylesheet">
+  <link href="CSS/cabecalho.css" rel="stylesheet">
+  <link href="CSS/chat.css" rel="stylesheet">
+  <link href="CSS/footer.css" rel="stylesheet">
+  <link rel="icon" href="Imagens/Cabeçalho/logo_icone.png">
+</head>
+
+<body>
+
+  <!--Cabeçalho-->
+  <div class="header" id="header">
+    <div class="logo_header">
+      <a href="https://teste.domynic.repl.co/">
+        <img src="Imagens/Cabeçalho/logo_vet_w.png" class="logo" alt="Polyglot" height="129,65" width="300">
+      </a>
+    </div>
+
+    <div class="menu">
+      <a href="login.html"><img src="Imagens/Cabeçalho/login.png" alt="Login" width="60" height="59,21">
+        <p class="logo_text">Login</p>
+      </a>
+    </div>
+  </div>
+  <!--Fim - Cabeçalho-->
+  <h1>Chat em Grupos</h1>
+
+  <div id="userPanel">
+    <h2>Usuários no Grupo</h2>
+    <ul id="userList"></ul>
+  </div>
+
+  <div id="chat">
+    <h2 id="groupName"></h2>
+    <div id="messageContainer"></div>
+    <form id="sendMessageForm">
+      <input type="text" id="message" placeholder="Digite uma mensagem..." required>
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+
+  <script>
+
+    const userList = document.getElementById('userList');
+    const groupName = document.getElementById('groupName');
+    const messageContainer = document.getElementById('messageContainer');
+    const sendMessageForm = document.getElementById('sendMessageForm');
+    const messageInput = document.getElementById('message');
+
+    let currentGroup = null;
+
+    // Função para carregar os usuários do grupo
+    function loadUsers(groupId) {
+      fetch(`/groups/${groupId}/users`)
+        .then(response => response.json())
+        .then(data => {
+          userList.innerHTML = '';
+          for (const user of data) {
+            const listItem = document.createElement('li');
+            listItem.textContent = user;
+            userList.appendChild(listItem);
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao carregar usuários:', error);
+        });
+    }
+
+    // Função para selecionar um grupo
+    function selectGroup(group) {
+      currentGroup = group;
+      groupName.textContent = group;
+      loadUsers(group);
+      loadMessages(group);
+    }
+
+    // Função para carregar as mensagens de um grupo
+    function loadMessages(groupId) {
+      fetch(`/groups/${groupId}/messages`)
+        .then(response => response.json())
+        .then(data => {
+          messageContainer.innerHTML = '';
+          for (const message of data) {
+            const messageElement = document.createElement('p');
+            messageElement.innerHTML = `<strong>${message.sender}:</strong> ${message.text}`;
+            messageContainer.appendChild(messageElement);
+          }
+          scrollToBottom();
+        })
+        .catch(error => {
+          console.error('Erro ao carregar mensagens:', error);
+        });
+    }
+
+    // Função para enviar uma mensagem para o grupo selecionado
+    function sendMessage(event) {
+      event.preventDefault();
+
+      const text = messageInput.value;
+
+      if (currentGroup && text) {
+        fetch(`/groups/${currentGroup}/messages`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({sender: localStorage.getItem("email"), text: text})
+        })
+          .then(() => {
+            messageInput.value = '';
+            loadMessages(currentGroup);
+          })
+          .catch(error => {
+            console.error('Erro ao enviar mensagem:', error);
+          });
+      }
+    }
+
+    // Função para rolar a tela até o final das mensagens
+    function scrollToBottom() {
+      messageContainer.scrollTop = messageContainer.scrollHeight;
+    }
+
+    // Carregar a lista de grupos ao carregar a página
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      selectGroup(urlParams.get('group_id'))
+    });
+
+    // Enviar mensagem quando o formulário for enviado
+    sendMessageForm.addEventListener('submit', sendMessage);
+  </script>
+  <!--Rodape-->
+  <main></main>
+  <footer>
+    <div id="footer_content">
+      <div id="footer_contacts">
+        <h1>Contatos</h1>
+        <p>Telefone: 0800 777-1205</p>
+        <p>Email: polyglot.school@gmail.com</p>
+
+        <div id="footer_social_media">
+          <a href="https://www.instagram.com/" class="footer-link" id="instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="https://www.facebook.com/" class="footer-link" id="facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+
+          <a href="https://www.whatsapp.com/" class="footer-link" id="whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+      <ul class="footer-list">
+        <li>
+          <h3>Projeto</h3>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Polyglot - Webapp Final</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">1/2023 - Ciência da Computação</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Puc Minas - Coração Eucarístico</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Trabalho Interdisciplinar Front-End</a>
+        </li>
+      </ul>
+
+      <ul class="footer-list">
+        <li>
+          <h3>Autores</h3>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Alice Pereira de Aguilar Penido</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Augusto César Ávila do Nascimento</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Domynic Barros Lima</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Felipe Rivetti Mizher</a>
+        </li>
+      </ul>
+
+      <div id="footer_subscribe">
+        <p>Cadastre seu e-mail para ficar por dentro das novidades !</p>
+        <div id="input_group">
+          <input type="email" id="email">
+          <button>
+            <i class="fa-regular fa-envelope"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer_copyright">
+      &#169
+      2023 all rights reserved
+    </div>
+  </footer>
+  <!--Fim - Rodape-->
+</body>
+
+</html>

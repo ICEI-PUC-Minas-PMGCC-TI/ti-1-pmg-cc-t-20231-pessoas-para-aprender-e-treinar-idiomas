@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <title>Polyglot</title>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link ref="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Inter&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="CSS/reset.css" rel="stylesheet">
+  <link href="CSS/cabecalho.css" rel="stylesheet">
+  <link href="CSS/footer.css" rel="stylesheet">
+  <link href="CSS/quiz.css" rel="stylesheet">
+  <link rel="icon" href="Imagens/Cabeçalho/logo_icone.png">
+</head>
+
+<body>
+
+  <!--Cabeçalho-->
+  <div class="header" id="header">
+    <div class="logo_header">
+      <a href="index.html">
+        <img src="Imagens/Cabeçalho/logo_vet_w.png" class="logo" alt="Polyglot" height="129,65" width="300">
+      </a>
+    </div>
+
+    <div class="menu">
+      <a href="login.html"><img src="Imagens/Cabeçalho/login.png" alt="Login" width="60" height="59,21"></a>
+    </div>
+  </div>
+  <!--Fim - Cabeçalho-->
+
+  <!--Quiz-->
+  <div class="main_quiz">
+    <h1>Bem-vindo à área de quizzes</h1>
+    <p>Selecione o tipo de quiz desejado e teste seus conhecimentos:</p>
+    <div class="area_quiz">
+      <button class="btn_quiz quiz_selection" onclick="startQuiz('portugues')">Quiz de Português</button>
+      <button class="btn_quiz quiz_selection" onclick="startQuiz('ingles')">Quiz de Inglês</button>
+      <button class="btn_quiz quiz_selection" onclick="startQuiz('espanhol')">Quiz de Espanhol</button>
+    </div>
+  </div>
+
+  <div id="quiz_container">
+    <h1 id="quiz_title"></h1>
+    <div id="question_container">
+      <h2 id="question_title"></h2>
+      <div class="options_container_style">
+        <div id="options_container"></div>
+      </div>
+    </div>
+  </div>
+  <div class="quiz_result_style">
+    <div id="quiz_result" style="display: none;">
+      <h2>Resultado do Quiz</h2>
+      <p id="result"></p>
+      <button class="btn_quiz2" onclick="resetQuiz()">Reiniciar Quiz</button>
+    </div>
+  </div>
+
+  <script>
+    var quizData = {
+      portugues: {
+        title: "Quiz de Português",
+        questions: [
+          {
+            question: "Qual é a capital do Brasil?",
+            options: ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador"],
+            answer: 2
+          },
+          {
+            question: "Quem escreveu o livro 'Dom Casmurro'?",
+            options: ["Machado de Assis", "Clarice Lispector", "Carlos Drummond de Andrade", "Graciliano Ramos"],
+            answer: 0
+          },
+          {
+            question: "Qual é o plural de 'gato'?",
+            options: ["Gatos", "Gatas", "Gatinhos", "Gatais"],
+            answer: 0
+          },
+          {
+            question: "Qual é o maior estado do Brasil?",
+            options: ["São Paulo", "Minas Gerais", "Amazonas", "Bahia"],
+            answer: 2
+          },
+          {
+            question: "Quem foi o presidente do Brasil em 2021?",
+            options: ["Jair Bolsonaro", "Fernando Haddad", "Luiz Inácio Lula da Silva", "Michel Temer"],
+            answer: 0
+          }
+        ]
+      },
+      ingles: {
+        title: "Quiz de Inglês",
+        questions: [
+          {
+            question: "What is the capital of the United States?",
+            options: ["New York City", "Washington D.C.", "Los Angeles", "Chicago"],
+            answer: 1
+          },
+          {
+            question: "Who wrote the novel 'Pride and Prejudice'?",
+            options: ["Charles Dickens", "Jane Austen", "William Shakespeare", "Mark Twain"],
+            answer: 1
+          },
+          {
+            question: "What is the plural of 'mouse'?",
+            options: ["Mouses", "Mice", "Mousees", "Mices"],
+            answer: 1
+          },
+          {
+            question: "Which country has the largest population in the world?",
+            options: ["China", "United States", "India", "Brazil"],
+            answer: 0
+          },
+          {
+            question: "What is the currency of Japan?",
+            options: ["Yen", "Euro", "Dollar", "Pound"],
+            answer: 0
+          }
+        ]
+      },
+      espanhol: {
+        title: "Quiz de Espanhol",
+        questions: [
+          {
+            question: "¿Cuál es la capital de España?",
+            options: ["Barcelona", "Valencia", "Sevilla", "Madrid"],
+            answer: 3
+          },
+          {
+            question: "¿Quién escribió el libro 'Cien años de soledad'?",
+            options: ["Gabriel García Márquez", "Pablo Neruda", "Jorge Luis Borges", "Mario Vargas Llosa"],
+            answer: 0
+          },
+          {
+            question: "¿Cuál es el plural de 'gato'?",
+            options: ["Gatos", "Gatas", "Gatitos", "Gatais"],
+            answer: 0
+          },
+          {
+            question: "¿Cuál es el país más grande de América del Sur?",
+            options: ["Brasil", "Argentina", "Perú", "Colombia"],
+            answer: 0
+          },
+          {
+            question: "¿Quién fue el presidente de México en 2021?",
+            options: ["Andrés Manuel López Obrador", "Enrique Peña Nieto", "Felipe Calderón", "Vicente Fox"],
+            answer: 0
+          }
+        ]
+      }
+    };
+
+    var currentQuiz = "";
+    var questionIndex = 0;
+    var correctAnswers = 0;
+
+    function startQuiz(quizType) {
+      currentQuiz = quizType;
+      document.getElementById("quiz_title").textContent = quizData[quizType].title;
+      document.querySelectorAll(".quiz_selection").forEach((btn) => {
+        if (btn.textContent !== quizData[quizType].title) {
+          btn.style.display = "none";
+        }
+      });
+      document.getElementById("quiz_container").style.display = "block";
+      document.getElementById("quiz_result").style.display = "none";
+      renderQuestion(questionIndex);
+    }
+
+    function renderQuestion(questionIndex) {
+      var question = quizData[currentQuiz].questions[questionIndex];
+      document.getElementById("question_title").textContent = question.question;
+      var optionsContainer = document.getElementById("options_container");
+      optionsContainer.innerHTML = "";
+      for (var i = 0; i < question.options.length; i++) {
+        var option = document.createElement("div");
+        option.textContent = question.options[i];
+        option.className = "option";
+        option.setAttribute("onclick", "selectAnswer(" + i + ")");
+        optionsContainer.appendChild(option);
+      }
+    }
+
+    function selectAnswer(optionIndex) {
+      var question = quizData[currentQuiz].questions[questionIndex];
+      var selectedOption = document.getElementsByClassName("option")[optionIndex];
+      if (optionIndex === question.answer) {
+        selectedOption.style.backgroundColor = "#4CAF50";
+        correctAnswers++;
+      } else {
+        selectedOption.style.backgroundColor = "#FF0000";
+      }
+      disableOptions();
+    }
+
+    function disableOptions() {
+      var options = document.getElementsByClassName("option");
+      for (var i = 0; i < options.length; i++) {
+        options[i].style.pointerEvents = "none";
+      }
+      setTimeout(nextQuestion, 1000);
+    }
+
+    function nextQuestion() {
+      questionIndex++;
+      if (questionIndex < quizData[currentQuiz].questions.length) {
+        renderQuestion(questionIndex);
+      } else {
+        showQuizResult();
+      }
+    }
+
+    function showQuizResult() {
+      var totalQuestions = quizData[currentQuiz].questions.length;
+      var resultText = "Você acertou " + correctAnswers + " de " + totalQuestions + " perguntas.";
+      document.getElementById("result").textContent = resultText;
+      document.getElementById("quiz_container").style.display = "none";
+      document.getElementById("quiz_result").style.display = "block";
+    }
+
+    function resetQuiz() {
+      questionIndex = 0;
+      correctAnswers = 0;
+      document.querySelectorAll(".quiz_selection").forEach((btn) => {
+        btn.style.display = "block";
+      });
+      document.getElementById("quiz_container").style.display = "none";
+      document.getElementById("quiz_result").style.display = "none";
+      document.querySelectorAll(".option").forEach((option) => {
+        option.style.backgroundColor = "#2196F3";
+        option.style.pointerEvents = "auto";
+      });
+      document.getElementById("options_container").innerHTML = "";
+      document.getElementById("question_title").textContent = "";
+      document.getElementById("quiz_title").textContent = "";
+      currentQuiz = "";
+    }
+  </script>
+  <!--Rodape-->
+  <main></main>
+  <footer>
+    <div id="footer_content">
+      <div id="footer_contacts">
+        <h1>Contatos</h1>
+        <p>Telefone: 0800 777-1205</p>
+        <p>Email: polyglot.school@gmail.com</p>
+
+        <div id="footer_social_media">
+          <a href="https://www.instagram.com/" class="footer-link" id="instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="https://www.facebook.com/" class="footer-link" id="facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+
+          <a href="https://www.whatsapp.com/" class="footer-link" id="whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+      <ul class="footer-list">
+        <li>
+          <h3>Projeto</h3>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Polyglot - Webapp Final</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">1/2023 - Ciência da Computação</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Puc Minas - Coração Eucarístico</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Trabalho Interdisciplinar Front-End</a>
+        </li>
+      </ul>
+
+      <ul class="footer-list">
+        <li>
+          <h3>Autores</h3>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Alice Pereira de Aguilar Penido</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Augusto César Ávila do Nascimento</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Domynic Barros Lima</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Felipe Rivetti Mizher</a>
+        </li>
+      </ul>
+
+      <div id="footer_subscribe">
+        <p>Cadastre seu e-mail para ficar por dentro das novidades !!!</p>
+        <div id="input_group">
+          <input type="email" id="email">
+          <button>
+            <i class="fa-regular fa-envelope"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer_copyright">
+      &#169
+      2023 all rights reserved
+    </div>
+  </footer>
+  <!--Fim - Rodape-->
+</body>
+
+</html>
+
+</body>
+
+</html>

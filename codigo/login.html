@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <title>Polyglot Login</title>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link ref="https://fonts.googleapis.com/css2? 
+  family=Fira+Code:wght@300;500&family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="CSS/login.css" rel="stylesheet">
+  <link href="CSS/reset.css" rel="stylesheet">
+  <link rel="icon" href="Imagens/Cabeçalho/logo_icone.png">
+</head>
+
+<body>
+  <div class="main_login">
+    <div class="area_login">
+      <div class="card_login">
+        <h1>Login</h1>
+        <div class="campos_login">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Digite seu email">
+        </div>
+        <div class="campos_login">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+        </div>
+        <button class="btn_login" type="submit" onclick="logar(event)">Entrar</button>
+        <div class="cadastro">
+          <a href="cadastro.html">Não tem uma conta? Cadastre-se</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script para realizar o login -->
+  <script>
+    function logar(event) {
+      event.preventDefault();
+
+      var email = document.getElementById('email').value;
+      var senha = document.getElementById('senha').value;
+
+      var dadosLogin = {
+        email: email,
+        senha: senha
+      };
+
+      fetch('/pessoas', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          var data = data;
+          console.log(data);
+          var usuarioEncontrado = data.find(usuario => usuario.email === email && usuario.senha === senha);
+
+          if (usuarioEncontrado) {
+            // Armazenar o estado de login no localStorage
+            localStorage.setItem('loggedIn', 'true');
+            localStorage.setItem('email', email);
+            alert('Login realizado com sucesso!');
+            // Redirecionar para a página de perfil do usuário
+            location.href = 'perfil.html';
+          } else {
+            alert('Email ou senha incorretos. Por favor, tente novamente.');
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao enviar a requisição GET:', error);
+        });
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <title>Polyglot</title>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link ref="https://fonts.googleapis.com/css2? 
+      family=Fira+Code:wght@300;500&family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="CSS/reset.css" rel="stylesheet">
+  <link href="CSS/cabecalho.css" rel="stylesheet">
+  <link href="CSS/chat.css" rel="stylesheet">
+  <link href="CSS/footer.css" rel="stylesheet">
+  <link rel="icon" href="Imagens/Cabeçalho/logo_icone.png">
+</head>
+
+<body>
+
+  <!--Cabeçalho-->
+  <div class="header" id="header">
+    <div class="logo_header">
+      <a href="https://teste.domynic.repl.co/">
+        <img src="Imagens/Cabeçalho/logo_vet_w.png" class="logo" alt="Polyglot" height="129,65" width="300">
+      </a>
+    </div>
+
+    <div class="menu">
+      <a href="login.html"><img src="Imagens/Cabeçalho/login.png" alt="Login" width="60" height="59,21">
+        <p class="logo_text">Login</p>
+      </a>
+    </div>
+  </div>
+  <!--Fim - Cabeçalho-->
+  <div class="main_chat"><h1>Chat em Grupos</h1>
+
+  <h2>Criar Grupo</h2>
+  <form id="createGroupForm">
+    <label>Selecione os participantes:</label><br>
+    <div id="participants"></div><br>
+    <button type="submit">Confirmar</button>
+  </form>
+  <h2>Resultado</h2>
+  <a id="result"></a>
+  </div>
+  <script>
+    const createGroupForm = document.getElementById('createGroupForm');
+    const sendMessageForm = document.getElementById('sendMessageForm');
+    const displayMessagesForm = document.getElementById('displayMessagesForm');
+    const resultDiv = document.getElementById('result');
+
+    const participantsDiv = document.getElementById('participants');
+
+    // Função para carregar a lista de participantes
+    fetch('/compativeis/' + localStorage.getItem("email"))
+      .then(response => response.json())
+      .then(data => {
+        for (const participant of data) {
+          const participantDiv = document.createElement('div');
+          participantDiv.classList.add('participant');
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.name = 'participant';
+          checkbox.value = participant.email;
+          participantDiv.appendChild(checkbox);
+          const label = document.createElement('label');
+          label.textContent = participant.nome;
+          participantDiv.appendChild(label);
+          participantsDiv.appendChild(participantDiv);
+        }
+      })
+      .catch(error => {
+        resultDiv.innerHTML = `Erro ao carregar participantes: ${error.message}`;
+      });
+
+    // Função para enviar uma solicitação POST para criar um novo grupo
+    createGroupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const checkboxes = document.getElementsByName('participant');
+      const selectedParticipants = Array.from(checkboxes)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+      selectedParticipants.push(localStorage.getItem("email"))
+      fetch('/grupo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ participantes: selectedParticipants })
+      })
+      .then(response => response.json())
+      .then(data => {
+        resultDiv.innerHTML = `Grupo criado com ID: ${data.grupoId}`;
+        resultDiv.href = "https://polyglot-final.domynic.repl.co/chat2.html?group_id=" + data.grupoId;
+      })
+      .catch(error => {
+        resultDiv.innerHTML = `Erro ao criar grupo: ${error.message}`;
+      });
+    });
+
+    // Função para enviar uma solicitação POST para enviar uma mensagem para um grupo
+    sendMessageForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const groupInput = document.getElementById('group');
+      const senderInput = document.getElementById('sender');
+      const messageInput = document.getElementById('message');
+
+      const group = groupInput.value;
+      const sender = localStorage.getItem("email");
+      const message = messageInput.value;
+
+      fetch(`/chat/${group}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ remetente: sender, mensagem: message })
+      })
+      .then(response => {
+        if (response.ok) {
+          resultDiv.innerHTML = `Mensagem enviada para o grupo "${group}"`;
+        } else {
+          resultDiv.innerHTML = `Erro ao enviar mensagem: ${response.statusText}`;
+        }
+      })
+      .catch(error => {
+        resultDiv.innerHTML = `Erro ao enviar mensagem: ${error.message}`;
+      });
+
+      groupInput.value = '';
+      senderInput.value = '';
+      messageInput.value = '';
+    });
+
+    // Função para enviar uma solicitação GET para exibir as mensagens de um grupo
+    displayMessagesForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const displayGroupInput = document.getElementById('displayGroup');
+      const group = displayGroupInput.value;
+
+      fetch(`/chat/${group}`)
+      .then(response => response.json())
+      .then(data => {
+        let messages = '';
+        for (const { remetente, mensagem } of data) {
+          messages += `<p><strong>${remetente}:</strong> ${mensagem}</p>`;
+        }
+        resultDiv.innerHTML = messages || 'Nenhuma mensagem encontrada no grupo.';
+      })
+      .catch(error => {
+        resultDiv.innerHTML = `Erro ao exibir mensagens: ${error.message}`;
+      });
+
+      displayGroupInput.value = '';
+    });
+  </script>
+<!--Rodape-->
+ <main></main>
+ <footer>
+   <div id="footer_content">
+     <div id="footer_contacts">
+       <h1>Contatos</h1>
+       <p>Telefone: 0800 777-1205</p>
+       <p>Email: polyglot.school@gmail.com</p>
+
+       <div id="footer_social_media">
+         <a href="https://www.instagram.com/" class="footer-link" id="instagram">
+           <i class="fa-brands fa-instagram"></i>
+         </a>
+
+         <a href="https://www.facebook.com/" class="footer-link" id="facebook">
+           <i class="fa-brands fa-facebook-f"></i>
+         </a>
+
+         <a href="https://www.whatsapp.com/" class="footer-link" id="whatsapp">
+           <i class="fa-brands fa-whatsapp"></i>
+         </a>
+       </div>
+     </div>
+
+     <ul class="footer-list">
+       <li>
+         <h3>Projeto</h3>
+       </li>
+       <li>
+         <a href="#" class="footer-link">Polyglot - Webapp Final</a>
+       </li>
+       <li>
+         <a href="#" class="footer-link">1/2023 - Ciência da Computação</a>
+       </li>
+       <li>
+         <a href="#" class="footer-link">Puc Minas - Coração Eucarístico</a>
+       </li>
+       <li>
+         <a href="#" class="footer-link">Trabalho Interdisciplinar Front-End</a>
+       </li>
+     </ul>
+
+     <ul class="footer-list">
+       <li>
+         <h3>Autores</h3>
+       </li>
+       <li>
+         <a href="#" class="footer-link">Alice Pereira de Aguilar Penido</a>
+       </li>
+       <li>
+         <a href="#" class="footer-link">Augusto César Ávila do Nascimento</a>
+       </li>
+       <li>
+         <a href="#" class="footer-link">Domynic Barros Lima</a>
+       </li>
+       <li>
+         <a href="#" class="footer-link">Felipe Rivetti Mizher</a>
+       </li>
+     </ul>
+
+     <div id="footer_subscribe">
+       <p>Cadastre seu e-mail para ficar por dentro das novidades !</p>
+       <div id="input_group">
+         <input type="email" id="email">
+         <button>
+           <i class="fa-regular fa-envelope"></i>
+         </button>
+       </div>
+     </div>
+   </div>
+
+   <div id="footer_copyright">
+     &#169
+     2023 all rights reserved
+   </div>
+ </footer>
+ <!--Fim - Rodape-->
+</body>
+
+</html>

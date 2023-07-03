@@ -1,0 +1,103 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+:root {
+  --original-cor: #b4d0d5;
+  --original-cor-2: #0a2a5d;
+  --original-cor-3: #6ec17d;
+
+  --primeira-cor: #2f2841;
+  --segunda-cor: #201b2c;
+  --terceira-cor: #2b134b;
+  --quarta-cor: #00ff88;
+  --quinta-cor: #514869;
+
+  --texto-cor: #fff;
+  --texto-cor-2: #f0ffff94;
+  --sombra-cor: #e100ff56;
+
+}
+
+body {
+  background-color: var(--segunda-cor);
+}

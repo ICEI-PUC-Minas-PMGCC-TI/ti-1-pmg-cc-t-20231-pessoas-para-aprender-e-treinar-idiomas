@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <title>Polyglot</title>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link ref="https://fonts.googleapis.com/css2? 
+      family=Fira+Code:wght@300;500&family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="CSS/reset.css" rel="stylesheet">
+  <link href="CSS/cabecalho.css" rel="stylesheet">
+  <link href="CSS/carrossel.css" rel="stylesheet">
+  <link href="CSS/reuniao.css" rel="stylesheet">
+  <link href="CSS/barra_lateral.css" rel="stylesheet">
+  <link href="CSS/footer.css" rel="stylesheet">
+  <link rel="icon" href="Imagens/Cabeçalho/logo_icone.png">
+</head>
+
+<body>
+
+  <!--Cabeçalho-->
+  <div class="header" id="header">
+    <div class="logo_header">
+      <a href="https://teste.domynic.repl.co/">
+        <img src="Imagens/Cabeçalho/logo_vet_w.png" class="logo" alt="Polyglot" height="129,65" width="300">
+      </a>
+    </div>
+
+    <div class="menu">
+      <a href="login.html"><img src="Imagens/Cabeçalho/login.png" alt="Login" width="60" height="59,21">
+        <p class="logo_text">Login</p>
+      </a>
+    </div>
+  </div>
+  <!--Fim - Cabeçalho-->
+
+  <!--Conteudo-->
+  <div class="conteudo">
+    <!--Carrossel de Novidades-->
+    <div class="main_carrossel">
+      <div class="titulo_carrossel">
+        <h1>Novidades</h1>
+      </div>
+      <div class="carrossel">
+        <div class="slides">
+          <input type="radio" name="slide" id="slide1" checked>
+          <input type="radio" name="slide" id="slide2">
+          <input type="radio" name="slide" id="slide3">
+
+          <div class="slide s1">
+            <img src="Imagens/Carrossel/t1.jpg">
+          </div>
+
+          <div class="slide">
+            <img src="Imagens/Carrossel/t2.jpg">
+          </div>
+
+          <div class="slide">
+            <img src="Imagens/Carrossel/t3.jpg">
+          </div>
+
+          <div class="navegation">
+            <label class="bar" for="slide1"></label>
+            <label class="bar" for="slide2"></label>
+            <label class="bar" for="slide3"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Fim-Carrossel-->
+
+    <!--Area de Aulas -->
+    <div class="main_reuniao">
+      <div class="reuniao">
+        <div class="reuniao_box">
+          <div class="reuniao_tiulo">
+            Reunião Individual
+          </div>
+          <div class="img_reuniao">
+            <img src="Imagens/Conteudo/reuniao1.png" alt="Reunião Individual" width="100%" height="100%">
+          </div>
+          <div class="div_botao_reuniao">
+            <button type="button" onclick="" class="botao_reuniao">Iniciar</button>
+          </div>
+        </div>
+
+        <div class="reuniao_box">
+          <div class="reuniao_tiulo">
+            Reunião com professor
+          </div>
+          <div class="img_reuniao">
+            <img src="Imagens/Conteudo/reuniao2.png" alt="Reunião com professor" width="100%" height="100%">
+          </div>
+          <div class="div_botao_reuniao">
+            <button type="button" onclick="" class="botao_reuniao">Iniciar</button>
+          </div>
+        </div>
+
+        <div class="reuniao_box">
+          <div class="reuniao_tiulo">
+            Reunião em Grupo
+          </div>
+          <div class="img_reuniao">
+            <img src="Imagens/Conteudo/reuniao3.png" alt="Reunião em Grupo" width="100%" height="100%">
+          </div>
+          <div class="div_botao_reuniao">
+            <button type="button" onclick="a()" class="botao_reuniao">Iniciar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Fim-Area de Aulas-->
+
+    <!--Barra Lateral-->
+    <div class="main_barra">
+      <div class="barra_lateal">
+        <div class="componentes_barra">
+          <div class="teste">
+            <a class="link_barra" href="manutencao.html">Favoritos</a>
+            <a href="manutencao.html">
+              <img src="Imagens/Conteudo/e1.png" alt="Favoritos" width="100" height="100">
+            </a>
+
+            <a class="link_barra" href="manutencao.html">Progresso</a>
+            <a href="manutencao.html">
+              <img src="Imagens/Conteudo/e2.png" alt="Progresso" width="100" height="100">
+            </a>
+
+            <a class="link_barra" href="quiz.html">Quizzes</a>
+            <a href="quiz.html">
+              <img src="Imagens/Conteudo/e3.png" alt="Quizzes" width="100" height="100">
+            </a>
+
+            <a class="link_barra" href="manutencao.html">Material de Apoio</a>
+            <a href="manutencao.html">
+              <img src="Imagens/Conteudo/e4.png" alt="Material de Apoio" width="100" height="100">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Fim-Barra Lateral-->
+  </div>
+  <!--Fim - Conteudo-->
+
+  <!--Rodape-->
+  <main></main>
+  <footer>
+    <div id="footer_content">
+      <div id="footer_contacts">
+        <h1>Contatos</h1>
+        <p>Telefone: 0800 777-1205</p>
+        <p>Email: polyglot.school@gmail.com</p>
+
+        <div id="footer_social_media">
+          <a href="https://www.instagram.com/" class="footer-link" id="instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+
+          <a href="https://www.facebook.com/" class="footer-link" id="facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+
+          <a href="https://www.whatsapp.com/" class="footer-link" id="whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+      <ul class="footer-list">
+        <li>
+          <h3>Projeto</h3>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Polyglot - Webapp Final</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">1/2023 - Ciência da Computação</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Puc Minas - Coração Eucarístico</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Trabalho Interdisciplinar Front-End</a>
+        </li>
+      </ul>
+
+      <ul class="footer-list">
+        <li>
+          <h3>Autores</h3>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Alice Pereira de Aguilar Penido</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Augusto César Ávila do Nascimento</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Domynic Barros Lima</a>
+        </li>
+        <li>
+          <a href="#" class="footer-link">Felipe Rivetti Mizher</a>
+        </li>
+      </ul>
+
+      <div id="footer_subscribe">
+        <p>Cadastre seu e-mail para ficar por dentro das novidades !</p>
+        <div id="input_group">
+          <input type="email" id="email">
+          <button>
+            <i class="fa-regular fa-envelope"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer_copyright">
+      &#169
+      2023 all rights reserved
+    </div>
+  </footer>
+  <!--Fim - Rodape-->
+  <script type="text/javascript">
+    function a() {
+        location.href = "chat.html";
+    };
+  </script>
+</body>
+
+</html>

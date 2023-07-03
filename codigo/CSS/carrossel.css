@@ -1,0 +1,86 @@
+.main_carrossel {
+  width: 74vw;
+  height: 40vh;
+  top: 120px;
+  position: relative;
+}
+
+.carrossel {
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  left: 3%;
+  border-radius: 10px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: var(--texto-cor);
+  box-sizing: border-box;
+}
+
+.navegation {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  display: flex;
+}
+
+.titulo_carrossel {
+  color: var(--texto-cor);
+  font-size: 18px;
+  font-family: 'Lucida Sans';
+  position: absolute;
+  top: -90px;
+  left: 6%;
+  box-sizing: border-box;
+}
+
+.bar {
+  width: 73px;
+  height: 16px;
+  border: 2px solid #FFF;
+  margin: 6px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.bar:hover {
+  background-color: #FFF;
+}
+
+.slides input {
+  display: none;
+}
+
+.slides {
+  display: flex;
+  width: 500%;
+  height: 100%;
+}
+
+.slide {
+  width: 25%;
+  transition: 0.6s;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+}
+
+#slide1:checked~.s1 {
+  margin-left: 0;
+}
+
+#slide2:checked~.s1 {
+  margin-left: -25%;
+}
+
+#slide3:checked~.s1 {
+  margin-left: -50%;
+}
+
+#slide4:checked~.s1 {
+  margin-left: -75%;
+}

@@ -1,0 +1,29 @@
+/*Cabeçalho*/
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--texto-cor);
+  background-color: var(--primeira-cor);
+  box-shadow: 1px 1px 30px var(--sombra-cor);
+  justify-content: space-between;
+  padding: 1.2% 3%;
+}
+
+/*Menu e Login*/
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--texto-cor);
+  padding: 1.2% 1%;
+  flex-direction: column;
+}
+
+.logo_text {
+  font-size: 1.2rem;
+  text-align: center;
+  color: var(--texto-cor);
+  text-decoration: none;
+  flex-direction: column;
+}

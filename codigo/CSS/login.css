@@ -1,0 +1,185 @@
+.main_login {
+  width: 100vw;
+  height: 100vh;
+  background: var(--segunda-cor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.area_login {
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card_login {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 35px;
+  box-shadow: 1px 1px 20px var(--sombra-cor);
+  background-color: var(--primeira-cor);
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--texto-cor);
+}
+
+.card_login h1 {
+  color: var(--texto-cor);
+  font-weight: 800;
+}
+
+.campos_login {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px 0px;
+}
+
+.campos_login input {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 12pt;
+  box-shadow: 1px 1px 10px var(--sombra-cor);
+  outline: none;
+  box-sizing: border-box;
+  background-color: var(--quinta-cor);
+  color: var(--texto-cor);
+}
+
+.campos_login input::placeholder {
+  color: var(--texto-cor-2)
+}
+
+.campos_login label {
+  color: var(--texto-cor);
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.btn_login {
+  width: 100%;
+  padding: 16px 0px;
+  margin: 25px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--terceira-cor);
+  background-color: var(--texto-cor);
+  box-shadow: 1px 1px 20px var(--sombra-cor);
+  cursor: pointer;
+}
+
+/*-----------------------Cadastro-----------------------*/
+
+.cadastro a {
+  color: var(--texto-cor);
+  text-decoration: none;
+}
+
+.main_cadastro {
+  width: 100vw;
+  height: 100vh;
+  background: var(--segunda-cor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.area_cadastro {
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card_cadastro {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 35px;
+  box-shadow: 1px 1px 20px var(--sombra-cor);
+  background-color: var(--primeira-cor);
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--texto-cor);
+}
+
+.card_cadastro h1 {
+  color: var(--texto-cor);
+  font-weight: 800;
+}
+
+.campos_cadastro {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px 0px;
+}
+
+.campos_cadastro input {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 12pt;
+  box-shadow: 1px 1px 10px var(--sombra-cor);
+  outline: none;
+  box-sizing: border-box;
+  background-color: var(--quinta-cor);
+  color: var(--texto-cor);
+}
+
+.campos_cadastro select {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 12pt;
+  box-shadow: 1px 1px 10px var(--sombra-cor);
+  outline: none;
+  box-sizing: border-box;
+  background-color: var(--quinta-cor);
+  color: var(--texto-cor);
+}
+
+.campos_cadastro label {
+  color: var(--texto-cor);
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.btn_cadastro {
+  width: 100%;
+  padding: 16px 0px;
+  margin: 25px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--terceira-cor);
+  background-color: var(--texto-cor);
+  box-shadow: 1px 1px 20px var(--sombra-cor);
+  cursor: pointer;
+}

@@ -1,0 +1,146 @@
+.conteudo {
+  height: 100vh;
+  width: 100%;
+}
+
+.reuniao {
+  height: 480px;
+  max-height: 480px;
+  width: 74.3%;
+  position: relative;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 250px;
+  left: 2%;
+}
+
+.reuniao_tiulo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15%;
+  width: 100%;
+  border-radius: 10px;
+  border-color: var(--texto-cor);
+  font-size: 110%;
+  text-align: center;
+  padding: 15px 0px;
+}
+
+.reuniao_box {
+  background-color: var(--primeira-cor);
+  align-items: center;
+  height: 100%;
+  width: 30%;
+  border-radius: 10px;
+  color: var(--texto-cor);
+  font-size: 25px;
+  box-shadow: 1px 1px 25px var(--sombra-cor);
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--texto-cor);
+}
+
+.img_reuniao {
+  margin-left: -6px;
+  margin-top: -50px;
+}
+
+.botao_reuniao {
+  padding: 10px 15px;
+  background-color: var(--texto-cor);
+  color: var(--terceira-cor);
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+  margin: 1px 1px;
+  cursor: pointer;
+  border-radius: 10px;
+  border-color: var(--terceira-cor);
+  box-shadow: 1px 1px 20px var(--sombra-cor);
+  border-style: solid;
+  border-width: 2px;
+}
+
+.div_botao_reuniao {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: -20%;
+}
+
+@media only screen and (max-width: 1536px) {
+
+  /* 125% */
+  .reuniao {
+    top: 180px;
+  }
+
+  .reuniao_box {
+    height: 80%;
+    font-size: 20px;
+  }
+
+  .botao_reuniao {
+    font-size: 20px;
+  }
+
+}
+
+@media only screen and (min-width: 1920px) {
+
+  /* 100% */
+  .reuniao {
+    top: 250px;
+  }
+
+  .reuniao_box {
+    height: 100%;
+    font-size: 25px;
+  }
+
+  .botao_reuniao {
+    font-size: 25px;
+  }
+
+}
+
+@media only screen and (min-width: 2500px) {
+
+  /* 75% */
+  .reuniao {
+    top: 380px;
+  }
+
+  .reuniao_box {
+    height: 135%;
+    font-size: 40px;
+  }
+
+  .botao_reuniao {
+    font-size: 40px;
+  }
+
+}
+
+@media only screen and (min-width: 3840px) {
+
+  /* 50% */
+  .reuniao {
+    top: 620px;
+  }
+
+  .reuniao_box {
+    height: 200%;
+    font-size: 60px;
+  }
+
+  .botao_reuniao {
+    font-size: 60px;
+  }
+
+}

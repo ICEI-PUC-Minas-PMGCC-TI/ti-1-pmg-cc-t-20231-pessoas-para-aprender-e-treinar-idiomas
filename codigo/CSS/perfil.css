@@ -1,0 +1,80 @@
+.main_perfil {
+  width: 100vw;
+  height: 100vh;
+  background: var(--segunda-cor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.area_perfil {
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card_perfil {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px 35px;
+  box-shadow: 1px 1px 20px var(--sombra-cor);
+  background-color: var(--primeira-cor);
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--texto-cor);
+}
+
+.card_perfil h1 {
+  color: var(--texto-cor);
+  font-weight: 800;
+  text-align: center;
+}
+
+.botao_perfil {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.entrar_reuniao {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 16px 0px;
+  margin: 25px;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: var(--terceira-cor);
+  background-color: var(--texto-cor);
+  box-shadow: 1px 1px 20px var(--sombra-cor);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.imagem_perfil {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+}
+
+.imagem_perfil img {
+  width: 100%;
+  height: 100%;
+  background-color: var(--primeira-cor);
+}
